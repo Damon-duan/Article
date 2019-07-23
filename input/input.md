@@ -2,7 +2,40 @@
 
 1、如果绝对定位的元素在最下面，键盘弹起时，绝对定位元素会在键盘上面
 
-> 解决办法：使用flex布局实现，有一个flex-shrink可使用，或者监听resize事件，将元素隐藏
+> 解决办法：使用flex布局实现，有一个flex-shrink可使用，配合监听resize事件，将元素隐藏
+__如图所示__
+
+<p>
+  <img src="../img/20190723111200.jpg">
+</p>
+
+__flex布局实现：__
+
+```html
+  <div class="wrapper">
+    <div class="content"></div>
+    <div class="footer"></div>
+  </div>
+```
+
+```scss
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content {
+    background-color: cyan;
+    height: 100%;
+  }
+  
+  .footer {
+    margin-top: auto;
+    flex-shrink: 0;
+    height: 44px;
+    background: deeppink;
+  }
+```
 
 ```js
 
@@ -113,6 +146,10 @@ UtilFn.ModalHelper = function (bodyCls) {
 5、ios和安卓配置数据键盘
 
 > pattern用于验证表单输入的内容，通常HTML5的type属性，比如email、tel、number、data类、url等，已经自带了简单的数据格式验证功能了，加上pattern后，前端部分的验证更加简单高效了。显而易见，pattern的属性值要用正则表达式。
+
+```html
+  <input type="text" pattern="[0-9]{13,16}">
+```
 
 常用的正则表达式
 
